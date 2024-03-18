@@ -1,7 +1,14 @@
+import { Outlet, Navigate } from 'react-router-dom';
+import {useStateContext} from './context/ContextProvider.jsx';
 export default function DefaultLayout(){
+  const {user, token} = useStateContext();
+  if(!token){
+    return <Navigate to="/login" />
+  }
     return (
         <>
-          GuestLayout
+        <h1>Default layout </h1>
+          <Outlet />
         </>
     )
 }
