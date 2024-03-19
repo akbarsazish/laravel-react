@@ -8,11 +8,8 @@ export default function GeustLayout(){
     return <Navigate to="/"/>
   }
     return (
-        <>
-          <h1 className="text-3xl font-bold underline bg-dark">
-            Hello world!
-          </h1>
+         <div id="guestLayout">
           <Outlet />
-        </>
+        </div>
     )
 }
