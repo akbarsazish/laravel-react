@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useStateContext } from "./context/ContextProvider";
+import { useStateContext } from "../context/ContextProvider";
 import "../index.css"
 
 export default function GeustLayout(){
