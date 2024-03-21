@@ -3,6 +3,7 @@ import {createRef, useState} from "react";
 import axiosClient from "../axios-client.js";
 import {useStateContext} from "../context/ContextProvider.jsx";
 
+
 export default function Signup() {
   const nameRef = createRef()
   const emailRef = createRef()
@@ -20,15 +21,22 @@ export default function Signup() {
       password: passwordRef.current.value,
       password_confirmation: passwordConfirmationRef.current.value,
     }
+    
+    setErrors(null)
     axiosClient.post('/signup', payload)
       .then(({data}) => {
+        console.log("error", data)
         setUser(data.user)
         setToken(data.token);
       })
       .catch(err => {
         const response = err.response;
         if (response && response.status === 422) {
-          setErrors(response.data.errors)
+          if(response.data.error){
+            setErrors(response.data.errors)
+          }else {
+            setErrors({email:[response.data.errors]});
+          }
         }
       })
   }

@@ -2,7 +2,7 @@ import axios from "axios";
 import {useStateContext} from "./context/ContextProvider.jsx";
 
 const axiosClient = axios.create({
-  baseURL: `http://192.168.10.21:8000/api`
+  baseURL: `http://localhost:8000/api`
 })
 
 axiosClient.interceptors.request.use((config) => {
@@ -19,7 +19,7 @@ axiosClient.interceptors.response.use((response) => {
     localStorage.removeItem('ACCESS_TOKEN')
     // window.location.reload();
   } else if (response.status === 404) {
-    //Show not found
+    console.log("not found 404");
   }
 
   throw error;

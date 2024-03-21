@@ -11,6 +11,8 @@ export default function DefaultLayout(){
 
   const onLogout = (event)=>{
     event.preventDefault();
+    <Navigate to='/login' />
+    localStorage.removeItem('ACCESS_TOKEN');
   }
   
     return (
@@ -27,7 +29,7 @@ export default function DefaultLayout(){
 
           <div>
             {user.name}
-            <a onClick={onLogout} className="btn-logout" href="#">Logout</a>
+            <button onClick={onLogout} className="btn-logout">Logout</button>
           </div>
         </header>
         <main>

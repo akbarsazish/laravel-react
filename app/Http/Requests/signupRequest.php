@@ -27,11 +27,10 @@ class signupRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(3)
-                    ->letters()
-                    ->symbols()
-                    ->numbers()
             ]
         ];
     }
 }
+
+
+
