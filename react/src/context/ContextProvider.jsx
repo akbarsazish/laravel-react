@@ -1,4 +1,5 @@
-import { createContext, useContext, useState} from "react";
+import { createContext, useContext, useEffect, useState} from "react";
+import axiosClient from "../axios-client";
 
 
 const StateContext = createContext({
@@ -10,9 +11,9 @@ const StateContext = createContext({
 
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({
-        name: "Ali Akbar"
-    });
+    const [user, setUser] = useState({});
+
+
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
     const setToken = (token) => {
         _setToken(token);
@@ -22,7 +23,7 @@ export const ContextProvider = ({ children }) => {
             localStorage.removeItem("ACCESS_TOKEN");
         }
     }
-
+    
     return (
         <StateContext.Provider value={{ user, token, setUser, setToken }}>
             {children}
