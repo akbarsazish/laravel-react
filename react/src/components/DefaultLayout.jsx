@@ -22,7 +22,6 @@ if (!token) {
 
 const onLogout = ev => {
   ev.preventDefault()
-
   axiosClient.post('/logout')
     .then(() => {
       setUser({})
